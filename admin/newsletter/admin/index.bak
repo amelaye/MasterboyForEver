@@ -1,0 +1,115 @@
+<html>
+<?
+include("../include/config.php");
+include("../include/fonctions.php");
+
+// Total inscrits
+$q = mysql_query("SELECT COUNT(*) AS num FROM ta_newsletter");
+$r = mysql_fetch_array($q);
+$tous = $r["num"];
+?>
+<head>
+<title>Home</title>
+<meta name="generator" content="Namo WebEditor v4.0">
+</head>
+
+<body bgcolor="#F9F2F2" text="black" link="blue" vlink="purple" alink="red">
+<table cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="740">
+            <table cellpadding="0" cellspacing="0" width="739">
+                <tr>
+                    <td width="231">
+                        <p><img src="images/index_php_smartbutton1.gif" namo_npi=":EmbededNPI1" border="0"></p>
+                    </td>
+                    <td width="508">
+                        <p>&nbsp;</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td width="740">
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="740">
+            <table cellpadding="0" cellspacing="0" width="740" bordercolordark="white" bordercolorlight="black">
+                <tr>
+                    <td width="143" height="6" valign="top" bgcolor="#F9F2F2">
+                        <table align="center" cellpadding="0" cellspacing="0" width="145" bgcolor="black">
+                            <tr>
+                                <td width="145" bgcolor="silver">
+                                    <p><font face="Arial" size="2">&nbsp;<img src="images/inform_white.gif" width="12" height="11" border="0" alt="inform_white.gif"> 
+                                    </font><font face="Comic Sans MS" size="2">Home</font></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="145" bgcolor="#F9F2F2">
+                                    <p><font face="Arial" size="2">&nbsp;<img src="images/square07_yellow.gif" width="11" height="11" border="0" alt="square07_yellow.gif"> <a href="?p=home">
+                                    Home</a><br>&nbsp;<img src="images/square07_yellow.gif" width="11" height="11" border="0" alt="square07_yellow.gif"> 
+                                    <a href="?p=mail">Envoy&eacute; un e-mail</a><br>&nbsp;<img src="images/square07_yellow.gif" width="11" height="11" border="0" alt="square07_yellow.gif"> <a href="?p=inscrit">Les 
+                                    inscrits</a><br>&nbsp;<img src="images/square07_yellow.gif" width="11" height="11" border="0" alt="square07_yellow.gif"> <a href="?p=archives">
+                                    Archives</a><br>&nbsp;<img src="images/square07_yellow.gif" width="11" height="11" border="0" alt="square07_yellow.gif"> 
+                                    <a href="?p=code">Codes Html&nbsp;</a></font></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table align="center" cellpadding="0" cellspacing="0" width="145" bgcolor="black">
+                            <tr>
+                                <td width="145" bgcolor="#E8DCE0">
+                                    <p><span style="font-size:5pt;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="597" height="6" valign="top">
+                        <table align="center" cellpadding="0" cellspacing="0" width="582">
+                            <tr>
+                                <td width="582">
+                                    <p><font face="Comic Sans MS" size="2">&nbsp;il y a actuelement 
+                                    </font><font face="Comic Sans MS" size="2" color="navy"><?echo "$tous";?> 
+                                    </font><font face="Comic Sans MS" size="2">inscrit(s)</font></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="582">
+                                    <hr size="1" color="black"></td>
+                            </tr>
+                            <tr>
+                                <td width="582">
+                                    <p><font color="navy">&nbsp;</font><font face="Arial" size="2" color="navy"><?if($p == "")
+{
+include "home.php";
+}
+else
+{
+include "$p.php";
+}?><br></font></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+<!--Namo WebEditor Data 4.0
+:EmbededNPI1
+agkAAHhecwny92JkYGYwY2Bg0AfieEYGhkQgDaQYfn76BJRhBrIMgFxXIB0DpOOBNDpgguoA
+i+/di0XFqNBAhECYgZ7pQNg7WOx0LMpMzFFwyklMzqaKk/iQTAHlCwsgBuUcW2C+iMKRL0B5
+AwQ2vPiPUNGAxKaKy7AbwsiQAcq1QMwBdAaIHgWgENDDB0ZAEIHzBRX9KYGWL3yAfG0g9gPm
+i3Ac+QJUw4ABnfICFb07bI3ySy0vVggoylfwSS0pSS0atv7E5THn/NzMZIXgxLxiBd9gKvge
+lC9A9QQIAADs/ibq
+-->
+
+
+
+
+
+</html>

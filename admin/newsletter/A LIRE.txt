@@ -1,0 +1,15 @@
+NEWSPROLETTER v0.5
+
+I)instalation
+	1) Editez le fichier Config.php qui se trouve dans le dossier include
+	2) Telecharger les fichier sur FTP
+	3) Démaré l'intalation en executant le dossier setup
+	5) Et voila c'est finis ;)
+
+
+
+si vous découvrez un bug ou vous voulez faire par de vos sugestions ,
+N'hesitez pas a nous envoyez un email : webmaster@teamsawards.fr.st
+
+
+ATTENTION : Votre hebergeur doit acepter la fonction MAIL()

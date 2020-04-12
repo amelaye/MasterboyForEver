@@ -1,0 +1,11 @@
+create table message_or
+(
+Id smallint AUTO_INCREMENT,
+Pseudo char(40),
+EMail char(40),
+Ville char(40),
+Pays char(20),
+Message LONGTEXT,
+Url char(40),
+primary key (Id)
+);

@@ -1,0 +1,62 @@
+<meta name="generator" content="Namo WebEditor v4.0">
+
+
+<p><font face="Arial" size="2"><b><i>Envoyer un mail &agrave; tout le monde 
+;) &nbsp;Vous pouvez inserez du code HTML mais pas les balise &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;/html&gt;</i></b></font></p>
+<form name="form1" method="post" action="send.php">
+    <table width="592" align="center" bgcolor="#F0EEEE">
+        <tr>
+            <td width="46" align="right">
+                <p><font size="2"><b>Sujet : </b></font></p>
+            </td>
+            <td width="536" align="left">
+                <p><font size="2"><input type="text" name="sujet" size="73"> </font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="46" align="right" valign="top">
+                <p>&nbsp;</p>
+            </td>
+            <td width="536">
+                <p><font face="Verdana"><select name="face" size="1">
+                <option selected>Selectioner une police</option>
+                <option value="Comic Sans Ms">Comic Sans Ms</option>
+                <option value="Arial">Arial</option>
+                <option value="Tempus Sans ITC">Tempus Sans ITC</option>
+                <option value="Verdana">Verdana</option>
+                </select><select name="size" size="1">
+                <option selected>Taille</option>
+                <option value="1">1 (8pts)</option>
+                <option value="2">2 (10pts)</option>
+                <option value="3">3 (12pts)</option>
+                <option value="4">4 (14pts)</option>
+                <option value="5">5 (18 pts)</option>
+                <option value="6">6 (24pts)</option>
+                <option value="7">7 (36pts)</option>
+                </select> </font><font face="Verdana" size="1">( que dans l'email 
+                )<input type="hidden" name="p" value="send"></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="46" align="right" valign="top" rowspan="3">
+                <p><font size="2"><b>Contenu : </b></font></p>
+            </td>
+            <td width="536">
+                <p><font size="2"><textarea name="body" rows="18" cols="73" style="font-family:'Comic Sans MS'; font-size:10pt;"></textarea></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="536" align="left">
+                <p><font face="Arial" size="2"><input type="radio" name="option" value="FREE" checked>Mode 
+                Free &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="option" value="PRO">Mode 
+                PRO</font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="536" align="left">
+                <p><font size="2"><input type="submit" value="Envoyer"> <input type="reset" value="Réinitialiser"></font></p>
+            </td>
+        </tr>
+    </table>
+</form>
+<p>&nbsp;</p>

@@ -1,0 +1,33 @@
+<?
+if($option == "PRO")
+{
+	$q2 = @mysql_query("SELECT * FROM ta_newsletter");
+	while ($r2 = mysql_fetch_array($q2)) {
+	$nl = @mail(htmlentities($r2["email"]),
+	"News Letter[ $sujet ]",
+	"<font face=\"$face\" size=\"$size\">".conv($body)."</font><font face=\"Arial\" size=\"2\"><br><br>--------------------<br>Pour ne plus recevoir la news letter de ce site web , allé sur :<br>http://$url/$dossier/add.php?email=".htmlentities($r2["email"])."&action=2<br>--------------------<br><br></font><font face=\"arial\" size=\"1\">Cet NewsLetter à été envoyé grâce au syteme d'envoie de mail de TeamsAwards.fr.st</font>",
+	"From: $from\r\nReply-To: $from\r\nContent-Type: text/html; charset=\"iso-8859-1\"\r\n");
+?>
+<p><textarea disabled rows="17" cols="64">
+Voici le contrendu des email envoyés :
+--------------------------------------
+<?
+ $nl == true ? print("".htmlentities($r2["email"])." Email envoyé ]\n") : print("".htmlentities($r2["email"])." [ ERREUR !]\n");
+?>
+</textarea></p>
+<p>&nbsp;</p>
+<?
+	}
+}
+if($option == "FREE")
+{
+		$q = @mysql_query("SELECT email FROM ta_newsletter");
+         	while ($r = mysql_fetch_array($q)) {
+		$recepteurs .= $r["email"];}
+  	$nl = @mail($recepteurs,
+	"News Letter[ $sujet ]",
+	"<font face=\"$face\" size=\"$size\">".conv($body)."</font><font face=\"Arial\" size=\"2\"><br><br>--------------------<br>Pour ne plus recevoir la news letter de ce site web , allé sur :<br>http://$url/$dossier/add.php?email=# inserez votre email ici #&action=2<br>--------------------<br><br></font><font face=\"arial\" size=\"1\">Cet NewsLetter à été envoyé grâce au syteme d'envoie de mail de TeamsAwards.fr.st</font>",
+	"From: $from\r\nReply-To: $from\r\nContent-Type: text/html; charset=\"iso-8859-1\"\r\n");
+ $nl == true ? print("Votre e-mail a bien été envoyé en mode FREE") : print("Erreur lors de l'envoie du message : Serveur Indisponible");
+}
+?>

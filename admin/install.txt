@@ -1,0 +1,83 @@
+//---------------------------------------------------------------------------------------------------
+//							
+//	GESTION D'UN ESPACE MEMBRE v1.11
+//
+//	Description : 	- Permet de créer un espace membre dans un site
+//			- Ajout d'utilisateurs
+//			- Formulaire de connexion...
+//	
+//	Auteur : 		Jean-François GAZET
+//	Site : 		http://www.webjeff.org
+//	Email : 		webmaster@webjeff.org	
+//
+//---------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------
+//	INSTALLATION
+//---------------------------------------------------------------------------------------------------
+
+1) Créez la table "membre" dans une base de données MySQL en recopiant le fichier MySQL.txt 
+2) Si vous avez souhaitez ajouter des champs (email, ville...), lisez et adaptez les parties "CHAMPS SUPLEMENTAIRES" 
+    des fichier "adduser.php3" et "zonemembre.php3".
+3) Modifiez les variables du fichier "conf.php3";
+4) Placez toutes les pages PHP et HTML dans un même répertoire sur votre site
+5) Vous pouvez ajouter un utilisateur avec la page "adduser.php3".
+    Pour entrez dans "L'espace membre", loguez vous grâce au formulaire de la page "index.htm".
+    En cas d'erreur de login ou de mot de passe, on est redirigé vers la page "erreur.htm" et en 
+    cas de succés, vers la page "zonemembre.php3";
+
+IMPORTANT !!!! PROTECTION DES PAGES MEMBRES
+Toutes les pages protégées par mot de passe dans votre "Espace membre" doivent être des pages PHP et 
+contenir le code suivant en haut de page, avant même la balise <HTML> :
+
+<?
+require("conf.php3");
+// CONNEXION MYSQL
+$db_link = @mysql_connect($sql_serveur,$sql_user,$sql_passwd);
+if(!$db_link) {echo "Connexion impossible à la base de données <b>$sql_bdd</b> sur le serveur <b>$sql_server</b><br>Vérifiez les paramètres du fichier conf.php3"; exit;}
+// SELECTION DE L'ENREGISTREMENT CONTENANT L'ID EN COURS
+$requete=mysql_db_query($sql_bdd,"select * from membre where id=\"$id\"",$db_link) or die(mysql_error());
+// SI L'ID N'EXISTE PAS
+if(mysql_num_rows($requete)==0)
+	{
+	// REDIRECTION PAGE ERREUR
+	header("Location:$url_erreur");
+	exit;
+	}
+// LIGNE FACULTATIVE : RECUPERATION DU PSEUDO
+$pseudo_membre=mysql_result($requete,0,"pseudo");
+// CHAMPS SUPLEMENTAIRES
+// Si vous avez ajouté des champs dans la table SQL, inspirez-vous de la ligne précédente pour récupérer leur valeur. 
+//$email=mysql_result($requete,0,"email");
+//$ville=mysql_result($requete,0,"ville");
+// DECONNEXION MYSQL	
+mysql_close($db_link);
+?>
+
+Ce code permet de vérifier si on est bien passé par le formulaire "index.htm".
+Vous pouvez afficher les informations du membre, comme par exemple son pseudo :
+<? echo "Bonjour $pseudo_membre"; ?>
+
+NAVIGATION ENTRE LES PAGES
+Le script "login.php3" a créé un identifiant aléatoire pour le membre et l'a mis à jour dans la table MySQL.
+Sans cet identifiant, on ne peut pas consulter la page. Il est accessible dans la page PHP avec la variable
+$id. Vous pouvez donc insérer des liens vers d'autres pages protégées avec le code suivant :
+
+<a href="pageprotege.php3?id=<? echo "$id"; ?>">AUTRE PAGE MEMBRE</a>
+
+NB : Si vous vos pages membres ne sont pas toutes dans le même répertoire, adaptez le chemin 
+       d'accés au fichier "conf.php3" dans la fonction require.
+       Exemple :	
+       require("../conf.php3");		// (répertoire parent)
+       require("monrep/conf.php3");	// (sous-répertoire)
+
+//---------------------------------------------------------------------------------------------------
+//	MISES A JOUR
+//---------------------------------------------------------------------------------------------------
+
+v1.11	- Meilleur gestion des erreurs MySQL (connexion, requetes...)
+	- Navigation entre les pages connexion, inscription et informations plus détaillées.
+
+v1.1	- Explications pour ajouter des champs pour les membres (email, ville...)
+	- Affichages des réponses MySQL en cas d'échec d'une requête lors de la mise en place.
+	- Message de bienvenue aprés validation du formulaire "adduser.php3".
